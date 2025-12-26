@@ -81,14 +81,8 @@ final class LastFM_Now_Playing {
 		// Add settings link to plugins page.
 		add_filter( 'plugin_action_links_' . LASTFM_NP_PLUGIN_BASENAME, array( $this, 'add_settings_link' ) );
 
-		// Add row meta links (View details, Donate).
-		add_filter( 'plugin_row_meta', array( $this, 'add_row_meta_links' ), 10, 2 );
-
 		// Enable auto-updates for this plugin.
 		add_filter( 'auto_update_plugin', array( $this, 'enable_auto_update' ), 10, 2 );
-
-		// Provide plugin info for the details popup.
-		add_filter( 'plugins_api', array( $this, 'plugin_info' ), 20, 3 );
 
 		// Initialize components.
 		LastFM_Settings::get_instance();
@@ -142,34 +136,6 @@ final class LastFM_Now_Playing {
 	}
 
 	/**
-	 * Add row meta links to plugins page.
-	 *
-	 * @param array  $links Existing meta links.
-	 * @param string $file  Plugin file path.
-	 * @return array Modified meta links.
-	 */
-	public function add_row_meta_links( $links, $file ) {
-		if ( LASTFM_NP_PLUGIN_BASENAME !== $file ) {
-			return $links;
-		}
-
-		$links[] = sprintf(
-			'<a href="%s" class="thickbox open-plugin-details-modal" aria-label="%s">%s</a>',
-			esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=lastfm-now-playing&TB_iframe=true&width=600&height=550' ) ),
-			esc_attr__( 'More information about this plugin', 'lastfm-now-playing' ),
-			esc_html__( 'View details', 'lastfm-now-playing' )
-		);
-
-		$links[] = sprintf(
-			'<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>',
-			esc_url( 'https://www.paypal.com/donate/?hosted_button_id=3X8QMH7RTRTGN' ),
-			esc_html__( 'Donate', 'lastfm-now-playing' )
-		);
-
-		return $links;
-	}
-
-	/**
 	 * Enable auto-updates for this plugin.
 	 *
 	 * @param bool|null $update Whether to update.
@@ -181,77 +147,6 @@ final class LastFM_Now_Playing {
 			return true;
 		}
 		return $update;
-	}
-
-	/**
-	 * Provide plugin information for the details popup.
-	 *
-	 * @param false|object|array $result The result object or array.
-	 * @param string             $action The type of information being requested.
-	 * @param object             $args   Plugin API arguments.
-	 * @return false|object Plugin info or false.
-	 */
-	public function plugin_info( $result, $action, $args ) {
-		if ( 'plugin_information' !== $action ) {
-			return $result;
-		}
-
-		if ( ! isset( $args->slug ) || 'lastfm-now-playing' !== $args->slug ) {
-			return $result;
-		}
-
-		$plugin_info = new stdClass();
-
-		$plugin_info->name           = "Paige's Last.FM Now Playing";
-		$plugin_info->slug           = 'lastfm-now-playing';
-		$plugin_info->version        = LASTFM_NP_VERSION;
-		$plugin_info->author         = '<a href="https://paigejulianne.com/">Paige Julianne Sullivan</a>';
-		$plugin_info->author_profile = 'https://paigejulianne.com/';
-		$plugin_info->requires       = '5.8';
-		$plugin_info->tested         = '6.9';
-		$plugin_info->requires_php   = '7.4';
-		$plugin_info->homepage       = 'https://github.com/paigejulianne/paiges-last.fm-now-playing';
-		$plugin_info->donate_link    = 'https://www.paypal.com/donate/?hosted_button_id=3X8QMH7RTRTGN';
-
-		$plugin_info->sections = array(
-			'description'  => '<p>Display your recently played tracks from Last.fm with a beautiful Spotify-inspired design.</p>
-				<h4>Features</h4>
-				<ul>
-					<li><strong>Gutenberg Block</strong> - Add your recent tracks to any post or page</li>
-					<li><strong>Classic Widget</strong> - Perfect for sidebars and widget areas</li>
-					<li><strong>Shortcode Support</strong> - Use <code>[lastfm_now_playing]</code> anywhere</li>
-					<li><strong>Spotify-Inspired Themes</strong> - Light, Dark, or Transparent</li>
-					<li><strong>Now Playing Indicator</strong> - Animated indicator for current track</li>
-					<li><strong>User Profile Header</strong> - Shows Last.fm avatar and profile link</li>
-					<li><strong>Configurable Display</strong> - Track count, album names, durations</li>
-					<li><strong>Built-in Caching</strong> - Reduces API calls</li>
-				</ul>',
-			'installation' => '<ol>
-					<li>Upload the plugin to <code>/wp-content/plugins/</code></li>
-					<li>Activate through the Plugins menu</li>
-					<li>Go to Settings → Paige\'s Last.FM Now Playing</li>
-					<li>Enter your Last.fm API key and username</li>
-					<li>Add the block, widget, or shortcode to your site</li>
-				</ol>
-				<p><strong>Get your API key:</strong> <a href="https://www.last.fm/api/account/create" target="_blank">Last.fm API</a></p>',
-			'changelog'    => '<h4>1.0.0</h4>
-				<ul>
-					<li>Initial release</li>
-					<li>Gutenberg block with per-instance configuration</li>
-					<li>Classic widget support</li>
-					<li>Shortcode support</li>
-					<li>Three Spotify-inspired themes</li>
-					<li>Now Playing animation indicator</li>
-					<li>Built-in caching</li>
-				</ul>',
-		);
-
-		$plugin_info->banners = array(
-			'low'  => '',
-			'high' => '',
-		);
-
-		return $plugin_info;
 	}
 
 	/**
@@ -310,3 +205,109 @@ function lastfm_now_playing() {
 
 // Start the plugin.
 lastfm_now_playing();
+
+/*
+ * The following filters run regardless of plugin activation state
+ * to ensure View details and Donate links always appear.
+ */
+
+/**
+ * Add row meta links to plugins page (runs even when plugin is deactivated).
+ *
+ * @param array  $links Existing meta links.
+ * @param string $file  Plugin file path.
+ * @return array Modified meta links.
+ */
+function lastfm_np_add_row_meta_links( $links, $file ) {
+	if ( plugin_basename( __FILE__ ) !== $file ) {
+		return $links;
+	}
+
+	$links[] = sprintf(
+		'<a href="%s" class="thickbox open-plugin-details-modal" aria-label="%s">%s</a>',
+		esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=lastfm-now-playing&TB_iframe=true&width=600&height=550' ) ),
+		esc_attr__( 'More information about this plugin', 'lastfm-now-playing' ),
+		esc_html__( 'View details', 'lastfm-now-playing' )
+	);
+
+	$links[] = sprintf(
+		'<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>',
+		esc_url( 'https://www.paypal.com/donate/?hosted_button_id=3X8QMH7RTRTGN' ),
+		esc_html__( 'Donate', 'lastfm-now-playing' )
+	);
+
+	return $links;
+}
+add_filter( 'plugin_row_meta', 'lastfm_np_add_row_meta_links', 10, 2 );
+
+/**
+ * Provide plugin information for the details popup (runs even when plugin is deactivated).
+ *
+ * @param false|object|array $result The result object or array.
+ * @param string             $action The type of information being requested.
+ * @param object             $args   Plugin API arguments.
+ * @return false|object Plugin info or false.
+ */
+function lastfm_np_plugin_info( $result, $action, $args ) {
+	if ( 'plugin_information' !== $action ) {
+		return $result;
+	}
+
+	if ( ! isset( $args->slug ) || 'lastfm-now-playing' !== $args->slug ) {
+		return $result;
+	}
+
+	$plugin_info = new stdClass();
+
+	$plugin_info->name           = "Paige's Last.FM Now Playing";
+	$plugin_info->slug           = 'lastfm-now-playing';
+	$plugin_info->version        = '1.0.0';
+	$plugin_info->author         = '<a href="https://paigejulianne.com/">Paige Julianne Sullivan</a>';
+	$plugin_info->author_profile = 'https://paigejulianne.com/';
+	$plugin_info->requires       = '5.8';
+	$plugin_info->tested         = '6.9';
+	$plugin_info->requires_php   = '7.4';
+	$plugin_info->homepage       = 'https://github.com/paigejulianne/paiges-last.fm-now-playing';
+	$plugin_info->donate_link    = 'https://www.paypal.com/donate/?hosted_button_id=3X8QMH7RTRTGN';
+
+	$plugin_info->sections = array(
+		'description'  => '<p>Display your recently played tracks from Last.fm with a beautiful Spotify-inspired design.</p>
+			<h4>Features</h4>
+			<ul>
+				<li><strong>Gutenberg Block</strong> - Add your recent tracks to any post or page</li>
+				<li><strong>Classic Widget</strong> - Perfect for sidebars and widget areas</li>
+				<li><strong>Shortcode Support</strong> - Use <code>[lastfm_now_playing]</code> anywhere</li>
+				<li><strong>Spotify-Inspired Themes</strong> - Light, Dark, or Transparent</li>
+				<li><strong>Now Playing Indicator</strong> - Animated indicator for current track</li>
+				<li><strong>User Profile Header</strong> - Shows Last.fm avatar and profile link</li>
+				<li><strong>Configurable Display</strong> - Track count, album names, durations</li>
+				<li><strong>Built-in Caching</strong> - Reduces API calls</li>
+			</ul>',
+		'installation' => '<ol>
+				<li>Upload the plugin to <code>/wp-content/plugins/</code></li>
+				<li>Activate through the Plugins menu</li>
+				<li>Go to Settings → Paige\'s Last.FM Now Playing</li>
+				<li>Enter your Last.fm API key and username</li>
+				<li>Add the block, widget, or shortcode to your site</li>
+			</ol>
+			<p><strong>Get your API key:</strong> <a href="https://www.last.fm/api/account/create" target="_blank">Last.fm API</a></p>',
+		'changelog'    => '<h4>1.0.0</h4>
+			<ul>
+				<li>Initial release</li>
+				<li>Gutenberg block with per-instance configuration</li>
+				<li>Classic widget support</li>
+				<li>Shortcode support</li>
+				<li>Three Spotify-inspired themes</li>
+				<li>Now Playing animation indicator</li>
+				<li>Built-in caching</li>
+			</ul>',
+	);
+
+	$plugin_info->banners = array(
+		'low'  => '',
+		'high' => '',
+	);
+
+	return $plugin_info;
+}
+add_filter( 'plugins_api', 'lastfm_np_plugin_info', 20, 3 );
