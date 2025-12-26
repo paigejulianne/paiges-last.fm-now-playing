@@ -11,7 +11,6 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: lastfm-now-playing
  * Domain Path: /languages
- * Update URI: https://github.com/paigejulianne/paiges-last.fm-now-playing
  *
  * @package LastFM_Now_Playing
  */
@@ -81,9 +80,6 @@ final class LastFM_Now_Playing {
 		// Add settings link to plugins page.
 		add_filter( 'plugin_action_links_' . LASTFM_NP_PLUGIN_BASENAME, array( $this, 'add_settings_link' ) );
 
-		// Enable auto-updates for this plugin.
-		add_filter( 'auto_update_plugin', array( $this, 'enable_auto_update' ), 10, 2 );
-
 		// Initialize components.
 		LastFM_Settings::get_instance();
 		LastFM_Block::get_instance();
@@ -133,20 +129,6 @@ final class LastFM_Now_Playing {
 		);
 		array_unshift( $links, $settings_link );
 		return $links;
-	}
-
-	/**
-	 * Enable auto-updates for this plugin.
-	 *
-	 * @param bool|null $update Whether to update.
-	 * @param object    $item   The update offer.
-	 * @return bool|null Whether to update.
-	 */
-	public function enable_auto_update( $update, $item ) {
-		if ( isset( $item->plugin ) && LASTFM_NP_PLUGIN_BASENAME === $item->plugin ) {
-			return true;
-		}
-		return $update;
 	}
 
 	/**
