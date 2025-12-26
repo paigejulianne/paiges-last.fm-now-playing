@@ -1,8 +1,8 @@
 === Paige's Last.FM Now Playing ===
 Contributors: paigejulianne
-Tags: lastfm, music, scrobble, now playing, spotify, widget, block
+Tags: lastfm, music, now playing, widget, block
 Requires at least: 5.8
-Tested up to: 6.4
+Tested up to: 6.9
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
