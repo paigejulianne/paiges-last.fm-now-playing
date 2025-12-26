@@ -1,0 +1,301 @@
+# Copyright (C) 2024 Paige Julianne Sullivan
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Paige's Last.FM Now Playing 1.0.0\n"
+"Report-Msgid-Bugs-To: https://paigejulianne.com/\n"
+"POT-Creation-Date: 2024-01-01T00:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: WP-CLI\n"
+"X-Domain: lastfm-now-playing\n"
+
+#: includes/class-lastfm-settings.php
+msgid "Last.fm Now Playing Settings"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Last.fm Now Playing"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Settings"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Last.fm API Settings"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Enter your Last.fm API credentials to connect to the service."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "API Key"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Your Last.fm API key. Required to fetch data."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Last.fm Username"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Your Last.fm username to display recent tracks from."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Default Display Settings"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Configure default settings for blocks and widgets. These can be overridden on a per-instance basis."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Number of Tracks"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Default number of tracks to display (1-50)."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Default Theme"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Light"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Dark"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Transparent"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Default theme style inspired by Spotify."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Show Album Name"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Display album name with each track"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Show Track Duration"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Display track duration when available"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Cache Settings"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Configure how long to cache Last.fm data to reduce API calls."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Cache Duration (seconds)"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "How long to cache Last.fm data (60-3600 seconds). Default is 300 (5 minutes)."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Save Settings"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "How to Get Your Last.fm API Key"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Go to the Last.fm API page:"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Sign in with your Last.fm account"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Fill in the application name and description"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Copy the API Key and paste it above"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Usage"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Gutenberg Block"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Search for \"Last.fm Now Playing\" in the block inserter to add the block to any post or page."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Widget"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Go to Appearance → Widgets and add the \"Last.fm Now Playing\" widget to any widget area."
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-lastfm-settings.php
+msgid "You can also use the shortcode:"
+msgstr ""
+
+#: includes/class-lastfm-api.php
+msgid "Last.fm API is not configured. Please add your API key and username in the settings."
+msgstr ""
+
+#: includes/class-lastfm-api.php
+msgid "Unknown API error"
+msgstr ""
+
+#: includes/class-lastfm-api.php
+msgid "Invalid response from Last.fm API"
+msgstr ""
+
+#: includes/class-lastfm-api.php
+msgid "Just now"
+msgstr ""
+
+#. translators: %d: number of minutes
+#: includes/class-lastfm-api.php
+msgid "%d minute ago"
+msgid_plural "%d minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of hours
+#: includes/class-lastfm-api.php
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of days
+#: includes/class-lastfm-api.php
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-lastfm-renderer.php
+msgid "Please configure your Last.fm API settings."
+msgstr ""
+
+#: includes/class-lastfm-renderer.php
+msgid "Recent Tracks"
+msgstr ""
+
+#: includes/class-lastfm-renderer.php
+msgid "No recent tracks found."
+msgstr ""
+
+#: includes/class-lastfm-renderer.php
+msgid "Now Playing"
+msgstr ""
+
+#: includes/class-lastfm-renderer.php
+msgid "View Profile on Last.fm"
+msgstr ""
+
+#: includes/class-lastfm-widget.php
+msgid "Display your recently played tracks from Last.fm."
+msgstr ""
+
+#: includes/class-lastfm-widget.php
+msgid "Title:"
+msgstr ""
+
+#: includes/class-lastfm-widget.php
+msgid "Number of Tracks:"
+msgstr ""
+
+#: includes/class-lastfm-widget.php
+msgid "Theme:"
+msgstr ""
+
+#. translators: %s: URL to settings page
+#: includes/class-lastfm-widget.php
+msgid "Please configure your Last.fm API settings in the %s."
+msgstr ""
+
+#: includes/class-lastfm-widget.php
+msgid "plugin settings"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "Please configure your Last.fm API settings to use this block."
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "Configure Settings"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "Display Settings"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "How many recent tracks to display."
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "Theme"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "Default (from settings)"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "Choose a Spotify-inspired theme."
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "music"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "lastfm"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "scrobble"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "spotify"
+msgstr ""
+
+#: blocks/recent-tracks/index.js
+msgid "now playing"
+msgstr ""

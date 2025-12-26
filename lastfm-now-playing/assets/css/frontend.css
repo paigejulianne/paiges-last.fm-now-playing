@@ -1,0 +1,452 @@
+/**
+ * Last.fm Now Playing - Frontend Styles
+ * Spotify-inspired theming
+ *
+ * @package LastFM_Now_Playing
+ */
+
+/* Container */
+.lastfm-np-container {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	border-radius: 8px;
+	overflow: hidden;
+	max-width: 400px;
+	margin: 0 auto;
+	line-height: 1.4;
+}
+
+.lastfm-np-container * {
+	box-sizing: border-box;
+}
+
+/* Header */
+.lastfm-np-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lastfm-np-user-link {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: inherit;
+	gap: 12px;
+}
+
+.lastfm-np-user-link:hover,
+.lastfm-np-user-link:focus {
+	text-decoration: none;
+}
+
+.lastfm-np-avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	object-fit: cover;
+	flex-shrink: 0;
+}
+
+.lastfm-np-avatar-placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.lastfm-np-avatar-placeholder svg {
+	width: 24px;
+	height: 24px;
+	opacity: 0.7;
+}
+
+.lastfm-np-user-info {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.lastfm-np-username {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.lastfm-np-label {
+	font-size: 12px;
+	opacity: 0.7;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.lastfm-np-logo {
+	flex-shrink: 0;
+}
+
+.lastfm-np-lastfm-icon {
+	width: 24px;
+	height: 24px;
+	opacity: 0.8;
+}
+
+/* Tracks list */
+.lastfm-np-tracks {
+	padding: 8px 0;
+}
+
+.lastfm-np-no-tracks {
+	padding: 24px 16px;
+	text-align: center;
+	opacity: 0.7;
+	margin: 0;
+}
+
+/* Single track */
+.lastfm-np-track {
+	transition: background-color 0.2s ease;
+}
+
+.lastfm-np-track:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lastfm-np-track-link {
+	display: flex;
+	align-items: center;
+	padding: 8px 16px;
+	text-decoration: none;
+	color: inherit;
+	gap: 12px;
+}
+
+.lastfm-np-track-link:hover,
+.lastfm-np-track-link:focus {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Track image */
+.lastfm-np-track-image {
+	width: 48px;
+	height: 48px;
+	border-radius: 4px;
+	overflow: hidden;
+	flex-shrink: 0;
+	position: relative;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.lastfm-np-track-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.lastfm-np-track-image-placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.lastfm-np-track-image-placeholder svg {
+	width: 24px;
+	height: 24px;
+	opacity: 0.5;
+}
+
+/* Now playing indicator */
+.lastfm-np-playing-indicator {
+	position: absolute;
+	bottom: 4px;
+	left: 4px;
+	display: flex;
+	align-items: flex-end;
+	gap: 2px;
+	height: 12px;
+}
+
+.lastfm-np-playing-indicator span {
+	width: 3px;
+	background-color: #1DB954;
+	border-radius: 1px;
+	animation: lastfm-np-equalizer 0.8s ease-in-out infinite;
+}
+
+.lastfm-np-playing-indicator span:nth-child(1) {
+	animation-delay: 0s;
+	height: 60%;
+}
+
+.lastfm-np-playing-indicator span:nth-child(2) {
+	animation-delay: 0.2s;
+	height: 100%;
+}
+
+.lastfm-np-playing-indicator span:nth-child(3) {
+	animation-delay: 0.4s;
+	height: 40%;
+}
+
+@keyframes lastfm-np-equalizer {
+	0%, 100% {
+		transform: scaleY(0.3);
+	}
+	50% {
+		transform: scaleY(1);
+	}
+}
+
+/* Track info */
+.lastfm-np-track-info {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.lastfm-np-track-name {
+	font-size: 14px;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.lastfm-np-track-artist {
+	font-size: 13px;
+	opacity: 0.7;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.lastfm-np-track-album {
+	font-size: 12px;
+	opacity: 0.5;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Track meta */
+.lastfm-np-track-meta {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 2px;
+	font-size: 12px;
+	opacity: 0.7;
+}
+
+.lastfm-np-status {
+	color: #1DB954;
+	font-weight: 500;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.lastfm-np-now-playing .lastfm-np-track-name {
+	color: #1DB954;
+}
+
+/* Footer */
+.lastfm-np-footer {
+	padding: 12px 16px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: center;
+}
+
+.lastfm-np-view-profile {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	font-weight: 500;
+	text-decoration: none;
+	opacity: 0.8;
+	transition: opacity 0.2s ease;
+}
+
+.lastfm-np-view-profile:hover,
+.lastfm-np-view-profile:focus {
+	opacity: 1;
+	text-decoration: none;
+}
+
+.lastfm-np-external-icon {
+	width: 14px;
+	height: 14px;
+}
+
+/* Error state */
+.lastfm-np-error {
+	padding: 24px 16px;
+	text-align: center;
+	background-color: rgba(255, 0, 0, 0.1);
+	border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.lastfm-np-error p {
+	margin: 0;
+	color: #ff6b6b;
+}
+
+/* ========================================
+   THEME: Dark (Default - Spotify-like)
+   ======================================== */
+.lastfm-np-theme-dark {
+	background-color: #121212;
+	color: #ffffff;
+}
+
+.lastfm-np-theme-dark .lastfm-np-header {
+	border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.lastfm-np-theme-dark .lastfm-np-footer {
+	border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.lastfm-np-theme-dark .lastfm-np-track:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lastfm-np-theme-dark .lastfm-np-user-link,
+.lastfm-np-theme-dark .lastfm-np-track-link,
+.lastfm-np-theme-dark .lastfm-np-view-profile {
+	color: #ffffff;
+}
+
+.lastfm-np-theme-dark .lastfm-np-avatar-placeholder,
+.lastfm-np-theme-dark .lastfm-np-track-image {
+	background-color: #282828;
+}
+
+/* ========================================
+   THEME: Light
+   ======================================== */
+.lastfm-np-theme-light {
+	background-color: #ffffff;
+	color: #191414;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lastfm-np-theme-light .lastfm-np-header {
+	border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.lastfm-np-theme-light .lastfm-np-footer {
+	border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.lastfm-np-theme-light .lastfm-np-track:hover {
+	background-color: rgba(0, 0, 0, 0.04);
+}
+
+.lastfm-np-theme-light .lastfm-np-user-link,
+.lastfm-np-theme-light .lastfm-np-track-link,
+.lastfm-np-theme-light .lastfm-np-view-profile {
+	color: #191414;
+}
+
+.lastfm-np-theme-light .lastfm-np-avatar-placeholder,
+.lastfm-np-theme-light .lastfm-np-track-image {
+	background-color: #f0f0f0;
+}
+
+.lastfm-np-theme-light .lastfm-np-avatar-placeholder svg,
+.lastfm-np-theme-light .lastfm-np-track-image-placeholder svg,
+.lastfm-np-theme-light .lastfm-np-lastfm-icon {
+	color: #666666;
+}
+
+/* ========================================
+   THEME: Transparent
+   ======================================== */
+.lastfm-np-theme-transparent {
+	background-color: transparent;
+	color: inherit;
+}
+
+.lastfm-np-theme-transparent .lastfm-np-header {
+	border-bottom-color: rgba(128, 128, 128, 0.2);
+}
+
+.lastfm-np-theme-transparent .lastfm-np-footer {
+	border-top-color: rgba(128, 128, 128, 0.2);
+}
+
+.lastfm-np-theme-transparent .lastfm-np-track:hover {
+	background-color: rgba(128, 128, 128, 0.1);
+}
+
+.lastfm-np-theme-transparent .lastfm-np-user-link,
+.lastfm-np-theme-transparent .lastfm-np-track-link,
+.lastfm-np-theme-transparent .lastfm-np-view-profile {
+	color: inherit;
+}
+
+.lastfm-np-theme-transparent .lastfm-np-avatar-placeholder,
+.lastfm-np-theme-transparent .lastfm-np-track-image {
+	background-color: rgba(128, 128, 128, 0.2);
+}
+
+/* ========================================
+   Responsive adjustments
+   ======================================== */
+@media (max-width: 400px) {
+	.lastfm-np-header {
+		padding: 12px;
+	}
+
+	.lastfm-np-avatar {
+		width: 40px;
+		height: 40px;
+	}
+
+	.lastfm-np-username {
+		font-size: 14px;
+	}
+
+	.lastfm-np-track-link {
+		padding: 6px 12px;
+	}
+
+	.lastfm-np-track-image {
+		width: 40px;
+		height: 40px;
+	}
+
+	.lastfm-np-track-name {
+		font-size: 13px;
+	}
+
+	.lastfm-np-track-artist {
+		font-size: 12px;
+	}
+
+	.lastfm-np-footer {
+		padding: 10px 12px;
+	}
+}
+
+/* ========================================
+   Widget-specific styles
+   ======================================== */
+.widget .lastfm-np-container {
+	max-width: 100%;
+}
+
+/* ========================================
+   Block Editor preview styles
+   ======================================== */
+.wp-block-lastfm-now-playing-recent-tracks .lastfm-np-container {
+	max-width: 100%;
+}

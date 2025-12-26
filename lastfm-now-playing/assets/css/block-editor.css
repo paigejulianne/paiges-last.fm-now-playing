@@ -1,0 +1,41 @@
+/**
+ * Last.fm Now Playing - Block Editor Styles
+ *
+ * @package LastFM_Now_Playing
+ */
+
+/* Block placeholder */
+.wp-block-lastfm-now-playing-recent-tracks .components-placeholder {
+	min-height: 200px;
+}
+
+.wp-block-lastfm-now-playing-recent-tracks .components-placeholder__label svg {
+	width: 24px;
+	height: 24px;
+	margin-right: 8px;
+}
+
+/* Server-side render loading state */
+.wp-block-lastfm-now-playing-recent-tracks .components-spinner {
+	margin: 20px auto;
+	display: block;
+}
+
+/* Ensure proper display in editor */
+.wp-block-lastfm-now-playing-recent-tracks .lastfm-np-container {
+	max-width: 100%;
+	pointer-events: none;
+}
+
+/* Allow links to be visible but not clickable in editor */
+.wp-block-lastfm-now-playing-recent-tracks .lastfm-np-container a {
+	cursor: default;
+}
+
+/* Block alignment support */
+.wp-block-lastfm-now-playing-recent-tracks.alignwide .lastfm-np-container,
+.wp-block-lastfm-now-playing-recent-tracks.alignfull .lastfm-np-container {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
