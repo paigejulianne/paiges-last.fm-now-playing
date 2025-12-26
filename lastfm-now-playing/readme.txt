@@ -1,5 +1,6 @@
 === Paige's Last.FM Now Playing ===
 Contributors: paigejulianne
+Donate link: https://www.paypal.com/donate/?hosted_button_id=3X8QMH7RTRTGN
 Tags: lastfm, music, now playing, widget, block
 Requires at least: 5.8
 Tested up to: 6.9
